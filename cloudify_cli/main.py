@@ -136,6 +136,9 @@ def _register_commands():
 
         blueprints.blueprints.add_command(blueprints.manager_list)
         executions.executions.add_command(executions.manager_resume)
+
+        plugins.plugins.add_command(plugins.manager_list)
+        plugins.plugins.add_command(plugins.manager_delete)
     else:
         _cfy.add_command(install.local)
         _cfy.add_command(uninstall.local)
@@ -150,6 +153,9 @@ def _register_commands():
 
         blueprints.blueprints.add_command(blueprints.local_list)
 
+        plugins.plugins.add_command(plugins.install)
+        plugins.plugins.add_command(plugins.local_list)
+        plugins.plugins.add_command(plugins.local_delete)
 
 _register_commands()
 
