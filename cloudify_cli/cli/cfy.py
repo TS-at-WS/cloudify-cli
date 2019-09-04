@@ -1062,6 +1062,13 @@ class Options(object):
             help=helptexts.INSTALL_AGENT_TIMEOUT
         )
 
+        self.update_executions = click.option(
+            '--update-executions',
+            is_flag=True,
+            default=False,
+            required=False,
+            help=helptexts.UPDATE_EXECUTIONS)
+
     def common_options(self, f):
         """A shorthand for applying commonly used arguments.
 
