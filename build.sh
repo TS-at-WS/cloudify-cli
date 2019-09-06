@@ -43,7 +43,7 @@ do
     cp -r omnibus-software/config/patches/$omnibus_softwate config/patches/
 done
 
-[ ! -d config/templates/ ] && mkdir config/templates/ 
+[ ! -d config/templates/ ] && mkdir config/templates/
 cp -r omnibus-software/config/templates/* config/templates/
 curl https://raw.githubusercontent.com/chef/omnibus-software/master/config/software/preparation.rb -o config/software/preparation.rb
 curl https://raw.githubusercontent.com/systemizer/omnibus-software/master/config/software/pip.rb -o config/software/pip.rb
@@ -66,6 +66,10 @@ echo "file=$file"
 file_no_build=$(echo "$file" | sed 's/\(.*\)-1/\1/' | sed 's/cloudify/cloudify-cli/')
 echo "file_no_build=$file_no_build"
 mv $file $file_no_build
+
+if [[ ! -z $BRANCH ]] && [[ "$BRANCH" != "master" ]] ; then
+    AWS_S3_PATH="$AWS_S3_PATH/$BRANCH"
+fi
 
 [ "$result" == "success" ] && create_md5 $FILEEXT &&
 [ -z ${AWS_ACCESS_KEY} ] || upload_to_s3 $FILEEXT && upload_to_s3 "md5" &&
