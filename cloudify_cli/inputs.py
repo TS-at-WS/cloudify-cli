@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 ########
 # Copyright (c) 2015 GigaSpaces Technologies Ltd. All rights reserved
 #
@@ -17,7 +18,7 @@ import os
 import glob
 import yaml
 
-from utils import deep_update_dict, insert_dotted_key_to_dict
+from .utils import deep_update_dict, insert_dotted_key_to_dict
 
 from .logger import get_logger
 from.exceptions import CloudifyCliError
