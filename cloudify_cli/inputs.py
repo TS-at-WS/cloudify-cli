@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 ########
 # Copyright (c) 2015 GigaSpaces Technologies Ltd. All rights reserved
 #
@@ -13,10 +12,13 @@ from __future__ import absolute_import
 # * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # * See the License for the specific language governing permissions and
 #    * limitations under the License.
+from __future__ import absolute_import
 
 import os
 import glob
 import yaml
+
+from cloudify._compat import text_type
 
 from .utils import deep_update_dict, insert_dotted_key_to_dict
 
@@ -46,7 +48,7 @@ def inputs_to_dict(resources, **kwargs):
     for resource in resources:
         logger.debug('Processing inputs source: {0}'.format(resource))
         # Workflow parameters always pass an empty dictionary. We ignore it
-        if isinstance(resource, basestring):
+        if isinstance(resource, text_type):
             try:
                 if kwargs.get('dot_hierarchy'):
                     deep_update_dict(parsed_dict,
