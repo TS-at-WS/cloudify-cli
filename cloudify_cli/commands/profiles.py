@@ -114,7 +114,7 @@ def show(logger):
                   short_help='List profiles')
 @cfy.options.common_options
 @cfy.pass_logger
-def list(logger):
+def profiles_list(logger):
     """
     List all profiles
     """
