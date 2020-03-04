@@ -16,7 +16,6 @@
 
 
 import sys
-import urllib
 import difflib
 import warnings
 import traceback
@@ -24,7 +23,7 @@ from functools import wraps
 
 import click
 
-from cloudify._compat import StringIO
+from cloudify._compat import StringIO, urlquote
 from cloudify_rest_client.constants import VisibilityState
 from cloudify_rest_client.exceptions import NotModifiedError
 from cloudify_rest_client.exceptions import CloudifyClientError
@@ -177,7 +176,7 @@ def validate_name(ctx, param, value):
             'ERROR: The `{0}` argument is empty'.format(param.name)
         )
 
-    quoted_value = urllib.quote(value, safe='')
+    quoted_value = urlquote(value, safe='')
     if value != quoted_value:
         raise CloudifyValidationError(
             'ERROR: The `{0}` argument contains illegal characters. Only '

@@ -99,7 +99,6 @@ class CliCommandTest(testtools.TestCase):
                 exit_code=outcome.exit_code,
                 exception=outcome.exception,
                 exc_info=outcome.exc_info)
-
         if should_fail:
             self.assertIn(err_str_segment, str(outcome.exception))
             self.assertEqual(exception, type(outcome.exception))

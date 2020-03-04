@@ -353,7 +353,7 @@ def manager_update(ctx,
         )
 
     if blueprint_path:
-        logger.warn(
+        logger.warning(
             'DEPRECATED: passing a path to blueprint for deployment update '
             'is deprecated, and it is recommended instead to pass an id of '
             'a blueprint that is already in the system. Note that '

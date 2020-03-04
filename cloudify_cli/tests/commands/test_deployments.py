@@ -208,7 +208,7 @@ class DeploymentUpdatesTest(CliCommandTest):
                 'cfy deployments update -p '
                 '{0} my_deployment --json-output'
                 .format(SAMPLE_BLUEPRINT_PATH))
-        self.assertEqual(len(warns), 1)
+        self.assertTrue(warns)
         self.assertIn('use the global', str(warns[0]))
 
     def test_deployment_update_include_logs_parameter(self):

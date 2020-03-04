@@ -56,7 +56,6 @@ default_manager_params = dict(
 
 @log_capture()
 def invoke(command, capture, context=None):
-
     logger.set_global_verbosity_level(verbose=logger.NO_VERBOSE)
 
     cfy = clicktest.CliRunner()
@@ -95,7 +94,6 @@ def invoke(command, capture, context=None):
 
     logs = [capture.records[m].msg for m in range(len(capture.records))]
     outcome.logs = '\n'.join(logs)
-
     return outcome
 
 
