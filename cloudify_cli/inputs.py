@@ -48,7 +48,7 @@ def inputs_to_dict(resources, **kwargs):
     for resource in resources:
         logger.debug('Processing inputs source: {0}'.format(resource))
         # Workflow parameters always pass an empty dictionary. We ignore it
-        if isinstance(resource, text_type):
+        if isinstance(resource, (text_type, bytes)):
             try:
                 if kwargs.get('dot_hierarchy'):
                     deep_update_dict(parsed_dict,
