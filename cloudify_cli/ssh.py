@@ -28,7 +28,7 @@ SSH_ERR = '`ssh_{0}` is not set in the current profile. ' \
 
 def get_host_date(host_string):
     # output here should be hidden anyway.
-    with fab.settings(fab.hide('running', 'stdout')):
+    with fab.hide('running', 'stdout'):
         return run_command_on_host('date +%Y%m%dT%H%M%S', host_string).stdout
 
 

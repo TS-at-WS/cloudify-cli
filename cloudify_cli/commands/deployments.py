@@ -494,7 +494,7 @@ def manager_create(blueprint_id,
         )
     except (MissingRequiredDeploymentInputError,
             UnknownDeploymentInputError) as e:
-        logger.error('Unable to create deployment: {0}'.format(e.message))
+        logger.error('Unable to create deployment: {0}'.format(e))
         raise SuppressedCloudifyCliError(str(e))
     except DeploymentPluginNotFound as e:
         logger.info("Unable to create deployment. Not all "
@@ -551,8 +551,8 @@ def manager_delete(deployment_id, force, with_logs, logger, client,
     # retrieve it, and that's fine
     except CloudifyClientError as e:
         if ('`Deployment` with ID `{0}` was not found'.format(deployment_id)
-                in e.message):
-            pass
+                not in str(e)):
+            raise
 
     logger.info("Deployment deleted")
 
