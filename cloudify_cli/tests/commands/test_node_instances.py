@@ -304,7 +304,7 @@ class NodeInstancesTest(CliCommandTest):
 
     def _assert_outputs(self, output, expected_outputs):
         output = output.logs.split('\n')
-        for key, value in expected_outputs.iteritems():
+        for key, value in expected_outputs.items():
             if value == 'null':
                 key_val_string = '    "{0}": {1}, '.format(key, value)
             else:

@@ -153,7 +153,7 @@ class ExecutionsTest(CliCommandTest):
     def _assert_outputs(self, expected_outputs):
         output = self.invoke(
             'cfy deployments outputs -b local').logs.split('\n')
-        for key, value in expected_outputs.iteritems():
+        for key, value in expected_outputs.items():
             if value == 'null':
                 key_val_string = '  "{0}": {1}, '.format(key, value)
             else:
